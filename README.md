@@ -28,3 +28,4 @@ Used to convert documentation between formats.
 
 * http://pandoc.org/demos.html
 
+* http://pandoc.org/MANUAL.html
