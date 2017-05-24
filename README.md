@@ -18,7 +18,11 @@ Used to convert documentation between formats.
 
 ### Converting to PDF (github-like)
 
-> docker run --rm -it -v $(pwd):/docs kalemena/pandoc -S -o readme.pdf --latex-engine=xelatex -f markdown_github --toc --top-level-division=chapter readme.md ?-*.md
+> docker run --rm -it -v $(pwd):/docs kalemena/pandoc -o readme.pdf -S --latex-engine=xelatex -f markdown_github --toc --top-level-division=chapter readme.md ?-*.md
+
+or
+
+> docker run --rm -it -v $(pwd):/docs kalemena/pandoc -o readme.pdf -s -S -r markdown+simple_tables+table_captions+yaml_metadata_block --latex-engine=pdflatex -f markdown_github --toc readme.md ?-*.md
 
 ## Build
 
@@ -26,6 +30,8 @@ Used to convert documentation between formats.
 
 ## References
 
-* http://pandoc.org/demos.html
+* [Pandoc demo](http://pandoc.org/demos.html)
 
-* http://pandoc.org/MANUAL.html
+* [Pandoc-Extras](https://github.com/jgm/pandoc/wiki/Pandoc-Extras)
+* [Apache Pandoc](https://github.com/chdemko/apache-pandoc)
+* [Other Docker image](https://github.com/silvio/docker-pandoc)
