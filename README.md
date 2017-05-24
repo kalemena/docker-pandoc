@@ -31,7 +31,6 @@ or
 ## References
 
 * [Pandoc demo](http://pandoc.org/demos.html)
-
+* [Pandoc Manual](http://pandoc.org/MANUAL.html)
 * [Pandoc-Extras](https://github.com/jgm/pandoc/wiki/Pandoc-Extras)
-* [Apache Pandoc](https://github.com/chdemko/apache-pandoc)
-* [Other Docker image](https://github.com/silvio/docker-pandoc)
+
