@@ -2,6 +2,8 @@ FROM debian:jessie
 
 MAINTAINER Kalemena
 
+ARG PANDOC_VERSION=2.2.1
+
 RUN apt-get clean; \
   apt-get update; \
   DEBIAN_FRONTEND=noninteractive apt-get install --yes \
@@ -22,7 +24,7 @@ RUN apt-get clean; \
     xz-utils; \
   apt-get clean; rm -rf /var/lib/apt/lists/*
 
-RUN wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-1-amd64.deb; \
+RUN wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb; \
   dpkg --install pandoc.deb; \
   rm pandoc.deb
 
