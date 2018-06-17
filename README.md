@@ -1,5 +1,7 @@
 # docker-pandoc
 
+[![Build Status](https://travis-ci.org/kalemena/docker-pandoc.svg?branch=master)](https://travis-ci.org/kalemena/docker-pandoc)
+
 Pandoc docker image.
 
 Used to convert documentation between formats.
