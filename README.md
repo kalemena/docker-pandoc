@@ -1,6 +1,7 @@
 # docker-pandoc
 
 [![Build Status](https://travis-ci.org/kalemena/docker-pandoc.svg?branch=master)](https://travis-ci.org/kalemena/docker-pandoc)
+[![Docker Image](https://images.microbadger.com/badges/version/kalemena/pandoc.svg)](https://microbadger.com/images/kalemena/pandoc)
 
 Pandoc docker image.
 
