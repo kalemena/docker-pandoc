@@ -14,23 +14,31 @@ Used to convert documentation between formats.
 
 ### Converting to HTML
 
+```bash
 > docker run --rm -it -v $(pwd):/docs kalemena/pandoc -o readme.html readme.md
+```
 
 ### Converting to PDF
 
+```bash
 > docker run --rm -it -v $(pwd):/docs kalemena/pandoc -o readme.pdf readme.md
+```
 
 ### Converting to PDF (github-like)
 
+```bash
 > docker run --rm -it -v $(pwd):/docs kalemena/pandoc -o readme.pdf -S --latex-engine=xelatex -f markdown_github --toc --top-level-division=chapter readme.md ?-*.md
-
+```
 or
-
+```bash
 > docker run --rm -it -v $(pwd):/docs kalemena/pandoc -o readme.pdf -s -S -r markdown+simple_tables+table_captions+yaml_metadata_block --latex-engine=pdflatex -f markdown_github --toc readme.md ?-*.md
+```
 
 ## Build
 
+```bash
 > docker build -t kalemena/pandoc .
+```
 
 ## References
 
