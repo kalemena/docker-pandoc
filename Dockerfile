@@ -2,7 +2,7 @@ FROM debian:jessie
 
 MAINTAINER Kalemena
 
-ARG PANDOC_VERSION=2.7
+ARG PANDOC_VERSION=2.7.2
 
  # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE

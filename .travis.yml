@@ -8,7 +8,7 @@ env:
     - REGISTRY_USER=kalemena
     - secure: "kQXXdnnMR/KXNpKtFxIAr21Z1RYVtDG2FwnXq8kDIZvnCZ1fEJuhIZg23GLDZ32y791kVvcnT6YTx5PUe3id98W6uqLneLmjO4f/EdkHvZkxQRWEx0oI4KWe/KAOHCKwPvBLCsFg5JRo0jxNR8fcZWauUwtxd44vHweR6wc2s2xKC9IaHLVcd8fzrmIRceazEzY/CYs0Q2nrSJPhon7BMK/OyTe9jK6LLB2BVtEZsGoAMkLB+wwfzR2jS2H268Lwi1PLKgDnm0lPQLaSn9tXOe+CgIG/hU9V6HGm6gEGaqdj5x8woddwHqZ5U/LJeBHf8ZMM+kWTKF+4/oC7p8vWUDWFSj+8Eeq9uAiQAQx761dBi7TFmILZZbfbn6avmLgbsuXkq5oLBBPilRQ0lJFIcE6cLRFDTISBfMHYDhxc5z7GszgULWNgbMrxvpC4n7mT35doJtKDB5IB9dE3qWptu6k9AYUMFxKJyMqt+XUDaym6ygOyTmz38j+rY7uSizcfEGA5ZbN4DE4bgSpU8Ljr5EvZtnEJPR/1mJbBRYLM3e80Zn4N6tY7MO8An+nchjo49UjOH9ihl/NSk4CXjiy4vnbiSTfUhQ1wVT0I66xfAcMRW5qcpgwLjPe9xg3WV7jWS2ngfIbClKAhkE/wph/BPlsbvs+DgB/WMuiBjEFbK08="
   matrix:
-    - IMAGE="kalemena/pandoc" VERSION="2.7" REPO="kalemena/docker-pandoc"
+    - IMAGE="kalemena/pandoc" VERSION="2.7.2" REPO="kalemena/docker-pandoc"
 
 before_script:
   - docker pull debian:jessie
