@@ -1,35 +1,29 @@
 sudo: required
-
 services:
-  - docker
-
+- docker
 env:
   global:
-    - REGISTRY_USER=kalemena
-    - secure: "kQXXdnnMR/KXNpKtFxIAr21Z1RYVtDG2FwnXq8kDIZvnCZ1fEJuhIZg23GLDZ32y791kVvcnT6YTx5PUe3id98W6uqLneLmjO4f/EdkHvZkxQRWEx0oI4KWe/KAOHCKwPvBLCsFg5JRo0jxNR8fcZWauUwtxd44vHweR6wc2s2xKC9IaHLVcd8fzrmIRceazEzY/CYs0Q2nrSJPhon7BMK/OyTe9jK6LLB2BVtEZsGoAMkLB+wwfzR2jS2H268Lwi1PLKgDnm0lPQLaSn9tXOe+CgIG/hU9V6HGm6gEGaqdj5x8woddwHqZ5U/LJeBHf8ZMM+kWTKF+4/oC7p8vWUDWFSj+8Eeq9uAiQAQx761dBi7TFmILZZbfbn6avmLgbsuXkq5oLBBPilRQ0lJFIcE6cLRFDTISBfMHYDhxc5z7GszgULWNgbMrxvpC4n7mT35doJtKDB5IB9dE3qWptu6k9AYUMFxKJyMqt+XUDaym6ygOyTmz38j+rY7uSizcfEGA5ZbN4DE4bgSpU8Ljr5EvZtnEJPR/1mJbBRYLM3e80Zn4N6tY7MO8An+nchjo49UjOH9ihl/NSk4CXjiy4vnbiSTfUhQ1wVT0I66xfAcMRW5qcpgwLjPe9xg3WV7jWS2ngfIbClKAhkE/wph/BPlsbvs+DgB/WMuiBjEFbK08="
+  - REGISTRY_USER=kalemena
+  - secure: UjA+ZWBHNGdwDQSm5Aklwa8xCGl0dvflKw0AIk5Grfe6EY7XUoeD/LwrqVBAyGaAE4paGrqelNmj8m6mqm4cZP74RAnh2rzujF5f1S3LDs04hldXMd7HSq3jedR1Wjb/DV5QDMcuReUC2ivT9St7F2GKzX09Kh6Hb6hZbxhRStbsG1RnJpHiVVVCtKTWjVmpkBJb8CKyUPb9WPGmpruE67Y8pwCL8e4lA+kAedJo1QaOVi7TpbeO0I2V3ivZ4nsoZIn1Kph1RNqL55vMBxZ0CkbzM7yXdG1dgkRYXvgPVUgtvusypPOiJ9ktS9z7rrmVmwZwXqGmQ1vyXILfpE27qhXI0+OPhNlAb8Sjqrm7pGFI0P+DRjrxDrqSYhWxdAGr+OL2sXNCv40FX5eLLjceOngdWfVIMsOh8lFycUtSZX/AoytRFDTPJbAff+DJH6fY/CmTLpNeqHa5pNL2ctl5g58hIlyF+k7cX3yqTJ3NilZQHgv4rLBv4LzjmC8IC2rzLqNIj+YA2W74DH+4rTVQ1icYx41F2tfdSq4X7TbLH8Pkcc9gMt0gxHhBees+3iD5/5JedBN0yMvJpDBUFu5zpnHtODL1O7TfOchtDSWrJnDFWaPvpBCPvQUQRM3tNIR+AKCtH91r0Gh9a76PQRcPvnUjSmyz7DqZtdElf7Qavhk=
   matrix:
-    - IMAGE="kalemena/pandoc" VERSION="2.7.2" REPO="kalemena/docker-pandoc"
-
+  - IMAGE="kalemena/pandoc" VERSION="2.7.2" REPO="kalemena/docker-pandoc"
 before_script:
-  - docker pull debian:jessie
-  - docker pull ${IMAGE}:${VERSION} || true
-
+- docker pull debian:jessie
+- docker pull ${IMAGE}:${VERSION} || true
 script:
-  - |
-    docker build --pull --cache-from ${IMAGE}:${VERSION} \
-      -t ${IMAGE}:${VERSION} \
-      -f Dockerfile \
-      --build-arg PANDOC_VERSION=${VERSION} \
-      --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
-      --build-arg VCS_REF=`git rev-parse --short HEAD` \
-      --build-arg VERSION=`cat VERSION` .
-  - docker ps -a
-  - docker tag ${IMAGE}:${VERSION} ${IMAGE}:latest
-  - docker images
-
+- |
+  docker build --pull --cache-from ${IMAGE}:${VERSION} \
+    -t ${IMAGE}:${VERSION} \
+    -f Dockerfile \
+    --build-arg PANDOC_VERSION=${VERSION} \
+    --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+    --build-arg VCS_REF=`git rev-parse --short HEAD` \
+    --build-arg VERSION=`cat VERSION` .
+- docker ps -a
+- docker tag ${IMAGE}:${VERSION} ${IMAGE}:latest
+- docker images
 before_deploy:
-  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
-
+- docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 deploy:
   provider: script
   script: docker push ${IMAGE}:${VERSION}; docker push ${IMAGE}:latest
