@@ -1,0 +1,56 @@
+= docker-pandoc
+
+ifdef::env-github[]
+image:https://travis-ci.org/kalemena/docker-pandoc.svg?branch=master[Travis build status, link=https://travis-ci.org/kalemena/docker-pandoc]
+image:https://img.shields.io/docker/v/kalemena/pandoc[Docker Hub, link=https://hub.docker.com/r/kalemena/pandoc/tags]
+image:https://img.shields.io/docker/pulls/kalemena/pandoc[Docker Hub, link=https://hub.docker.com/r/kalemena/pandoc/tags]
+image:https://img.shields.io/docker/image-size/kalemena/pandoc[Docker Hub, link=https://hub.docker.com/r/kalemena/pandoc/tags]
+endif::[]
+
+Pandoc docker image.
+
+Used to convert documentation between formats.
+
+= How-To
+
+== Run
+
+=== Converting to HTML
+
+[source,bash]
+----
+> docker run --rm -it -v $(pwd):/docs kalemena/pandoc -o readme.html readme.md
+----
+
+=== Converting to PDF
+
+[source,bash]
+----
+> docker run --rm -it -v $(pwd):/docs kalemena/pandoc -o readme.pdf readme.md
+----
+
+=== Converting to PDF (github-like)
+
+[source,bash]
+----
+> docker run --rm -it -v $(pwd):/docs kalemena/pandoc -o readme.pdf -S --latex-engine=xelatex -f markdown_github --toc --top-level-division=chapter readme.md ?-*.md
+----
+or
+[source,bash]
+----
+> docker run --rm -it -v $(pwd):/docs kalemena/pandoc -o readme.pdf -s -S -r markdown+simple_tables+table_captions+yaml_metadata_block --latex-engine=pdflatex -f markdown_github --toc readme.md ?-*.md
+----
+
+== Build
+
+[source,bash]
+----
+> docker build -t kalemena/pandoc .
+----
+
+== References
+
+* link:http://pandoc.org/demos.html[Pandoc demo]
+* link:http://pandoc.org/MANUAL.html[Pandoc Manual]
+* link:https://github.com/jgm/pandoc/wiki/Pandoc-Extras[Pandoc-Extras]
+
