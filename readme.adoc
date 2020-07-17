@@ -1,7 +1,7 @@
 = docker-pandoc
 
 ifdef::env-github[]
-image:https://travis-ci.org/kalemena/docker-pandoc.svg?branch=master[Travis build status, link=https://travis-ci.org/kalemena/docker-pandoc]
+image:https://github.com/kalemena/docker-pandoc/workflows/Pipeline/badge.svg[GitHub Build]
 image:https://img.shields.io/docker/v/kalemena/pandoc[Docker Hub, link=https://hub.docker.com/r/kalemena/pandoc/tags]
 image:https://img.shields.io/docker/pulls/kalemena/pandoc[Docker Hub, link=https://hub.docker.com/r/kalemena/pandoc/tags]
 image:https://img.shields.io/docker/image-size/kalemena/pandoc[Docker Hub, link=https://hub.docker.com/r/kalemena/pandoc/tags]
