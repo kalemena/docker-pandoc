@@ -1,7 +1,5 @@
 FROM debian:jessie
 
-MAINTAINER Kalemena
-
 ARG PANDOC_VERSION=2.10
 
  # Build-time metadata as defined at http://label-schema.org
